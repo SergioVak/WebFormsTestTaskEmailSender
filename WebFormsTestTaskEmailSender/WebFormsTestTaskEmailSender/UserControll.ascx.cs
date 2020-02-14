@@ -47,6 +47,17 @@ namespace WebFormsTestTaskEmailSender
             {
                 InvalidEmailLabel.Visible = true;
             }
+        }         
+        protected void EmailInput_TextChanged(object sender, EventArgs e)
+        {
+            Response.Cookies.Add(_cookiesManipulator.SetCookie(EMAIL, EmailInput.Text
+                , COOKIE_LIFE_DAYS));
+        }
+
+        protected void MessageInput_TextChanged(object sender, EventArgs e)
+        {
+            Response.Cookies.Add(_cookiesManipulator.SetCookie(MESSAGE, MessageInput.Text
+                , COOKIE_LIFE_DAYS));
         }
 
         private void SetFields()
@@ -68,18 +79,6 @@ namespace WebFormsTestTaskEmailSender
             {
                 MessageInput.Text = _cookiesManipulator.GetCookie(MESSAGE);
             }
-        }
-
-        protected void EmailInput_TextChanged(object sender, EventArgs e)
-        {
-            Response.Cookies.Add(_cookiesManipulator.SetCookie(EMAIL, EmailInput.Text
-                , COOKIE_LIFE_DAYS));
-        }
-
-        protected void MessageInput_TextChanged(object sender, EventArgs e)
-        {
-            Response.Cookies.Add(_cookiesManipulator.SetCookie(MESSAGE, MessageInput.Text
-                , COOKIE_LIFE_DAYS));
         }
     }
 }
